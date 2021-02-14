@@ -18,8 +18,8 @@
     <tr *ngFor="let productInOrder of productInOrders">
         <th class="align-middle" scope="row">
             <a routerLink="/product/{{productInOrder.productId}}"><img height="100px"
-                                                                       src="{{productInOrder.productIcon}}"
-                                                                       alt="{{productInOrder.productName}}"></a>
+                src="{{productInOrder.productIcon}}"
+                alt="{{productInOrder.productName}}"></a>
         </th>
         <td class="align-middle"><a
                 routerLink="/product/{{productInOrder.productId}}">{{productInOrder.productName}}</a></td>
