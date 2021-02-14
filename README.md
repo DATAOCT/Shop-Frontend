@@ -28,3 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
  ng build --prod --build-optimizer --vendor-chunk --progress --output-hashing=all --stats-json --source-map=true 
+
+
+ 
+C:\Users\chauhan.prashant>ssh -i C:\Users\chauhan.prashant\Downloads\key-value.pem ubuntu@ec2-15-207-223-129.ap-south-1.compute.amazonaws.com
