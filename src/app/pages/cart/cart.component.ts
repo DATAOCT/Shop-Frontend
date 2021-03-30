@@ -15,6 +15,7 @@ import {Role} from '../../enum/Role';
 })
 export class CartComponent implements OnInit, OnDestroy, AfterContentChecked {
 
+    alert:boolean=false
     constructor(private cartService: CartService,
                 private userService: UserService,
                 private router: Router) {
@@ -75,6 +76,8 @@ export class CartComponent implements OnInit, OnDestroy, AfterContentChecked {
     addOne(productInOrder) {
         productInOrder.count++;
         CartComponent.validateCount(productInOrder);
+        console.log('addOne');
+
         if (this.currentUser) { this.updateTerms.next(productInOrder); }
     }
 
@@ -86,6 +89,8 @@ export class CartComponent implements OnInit, OnDestroy, AfterContentChecked {
 
     onChange(productInOrder) {
         CartComponent.validateCount(productInOrder);
+        console.log('onChange');
+
         if (this.currentUser) { this.updateTerms.next(productInOrder); }
     }
 
@@ -102,8 +107,11 @@ export class CartComponent implements OnInit, OnDestroy, AfterContentChecked {
     checkout() {
         if (!this.currentUser) {
             this.router.navigate(['/login'], {queryParams: {returnUrl: this.router.url}});
+            console.log('checkout 1');
         } else if (this.currentUser.role !== Role.Customer) {
             this.router.navigate(['/seller']);
+            console.log('checkout 2');
+
         } else {
             this.cartService.checkout().subscribe(
                 _ => {
@@ -112,9 +120,12 @@ export class CartComponent implements OnInit, OnDestroy, AfterContentChecked {
                 error1 => {
                     console.log('Checkout Cart Failed');
                 });
+                console.log('checkout 3');
+                this.alert=true
+                alert(' Please Confirm')
             this.router.navigate(['/']);
-        }
-
+           
+        }        
     }
 }
 
